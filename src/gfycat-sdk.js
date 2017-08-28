@@ -263,6 +263,21 @@ export default class Gfycat {
     return this._request(options, callback);
   }
 
+  createAlbum(opts, callback) {
+    if (!opts) return this.handleError('invalid Object', callback);
+
+    if (!opts.title) {
+      return this.handleError('Title is required to create album')
+    }
+
+    let options = {
+      path: '/me/albums',
+      method: 'POST',
+      postData: opts
+    }
+
+    return this._request(options, callback)
+  }
 
   /**
    *  Upload by URL
